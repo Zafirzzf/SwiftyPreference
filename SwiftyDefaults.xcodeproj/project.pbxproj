@@ -13,10 +13,10 @@
 		18C544BE22C325D0007D3C89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C544BD22C325D0007D3C89 /* Assets.xcassets */; };
 		18C544C122C325D0007D3C89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C544BF22C325D0007D3C89 /* LaunchScreen.storyboard */; };
 		18C544CC22C325D0007D3C89 /* SwiftyDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544CB22C325D0007D3C89 /* SwiftyDefaultsTests.swift */; };
-		18C544F222C3269B007D3C89 /* DefaultEnumable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544EB22C3269B007D3C89 /* DefaultEnumable.swift */; };
-		18C544F322C3269B007D3C89 /* DefaultEnumable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544EB22C3269B007D3C89 /* DefaultEnumable.swift */; };
-		18C544F422C3269B007D3C89 /* DefaultObjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544EC22C3269B007D3C89 /* DefaultObjectable.swift */; };
-		18C544F522C3269B007D3C89 /* DefaultObjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544EC22C3269B007D3C89 /* DefaultObjectable.swift */; };
+		18C544F222C3269B007D3C89 /* PreferenceEnumible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544EB22C3269B007D3C89 /* PreferenceEnumible.swift */; };
+		18C544F322C3269B007D3C89 /* PreferenceEnumible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544EB22C3269B007D3C89 /* PreferenceEnumible.swift */; };
+		18C544F422C3269B007D3C89 /* PreferenceObjectible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544EC22C3269B007D3C89 /* PreferenceObjectible.swift */; };
+		18C544F522C3269B007D3C89 /* PreferenceObjectible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544EC22C3269B007D3C89 /* PreferenceObjectible.swift */; };
 		18C544F822C3269B007D3C89 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544EE22C3269B007D3C89 /* Entity.swift */; };
 		18C544F922C3269B007D3C89 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544EE22C3269B007D3C89 /* Entity.swift */; };
 		18C544FA22C3269B007D3C89 /* DefaultConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544EF22C3269B007D3C89 /* DefaultConfig.swift */; };
@@ -25,6 +25,8 @@
 		18C544FD22C3269B007D3C89 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544F022C3269B007D3C89 /* Person.swift */; };
 		18C544FE22C3269B007D3C89 /* TakePhotoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544F122C3269B007D3C89 /* TakePhotoType.swift */; };
 		18C544FF22C3269B007D3C89 /* TakePhotoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544F122C3269B007D3C89 /* TakePhotoType.swift */; };
+		18C5450122C33C5C007D3C89 /* Preferenceible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5450022C33C5C007D3C89 /* Preferenceible.swift */; };
+		18C5450222C33C5C007D3C89 /* Preferenceible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5450022C33C5C007D3C89 /* Preferenceible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,12 +50,13 @@
 		18C544C722C325D0007D3C89 /* SwiftyDefaultsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyDefaultsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C544CB22C325D0007D3C89 /* SwiftyDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyDefaultsTests.swift; sourceTree = "<group>"; };
 		18C544CD22C325D0007D3C89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18C544EB22C3269B007D3C89 /* DefaultEnumable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultEnumable.swift; sourceTree = "<group>"; };
-		18C544EC22C3269B007D3C89 /* DefaultObjectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultObjectable.swift; sourceTree = "<group>"; };
+		18C544EB22C3269B007D3C89 /* PreferenceEnumible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceEnumible.swift; sourceTree = "<group>"; };
+		18C544EC22C3269B007D3C89 /* PreferenceObjectible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceObjectible.swift; sourceTree = "<group>"; };
 		18C544EE22C3269B007D3C89 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		18C544EF22C3269B007D3C89 /* DefaultConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultConfig.swift; sourceTree = "<group>"; };
 		18C544F022C3269B007D3C89 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		18C544F122C3269B007D3C89 /* TakePhotoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoType.swift; sourceTree = "<group>"; };
+		18C5450022C33C5C007D3C89 /* Preferenceible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferenceible.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +100,9 @@
 			children = (
 				18C544B622C325CF007D3C89 /* AppDelegate.swift */,
 				18C544EE22C3269B007D3C89 /* Entity.swift */,
-				18C544EB22C3269B007D3C89 /* DefaultEnumable.swift */,
-				18C544EC22C3269B007D3C89 /* DefaultObjectable.swift */,
+				18C5450022C33C5C007D3C89 /* Preferenceible.swift */,
+				18C544EB22C3269B007D3C89 /* PreferenceEnumible.swift */,
+				18C544EC22C3269B007D3C89 /* PreferenceObjectible.swift */,
 				18C544EF22C3269B007D3C89 /* DefaultConfig.swift */,
 				18C544F022C3269B007D3C89 /* Person.swift */,
 				18C544F122C3269B007D3C89 /* TakePhotoType.swift */,
@@ -222,10 +226,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				18C544B922C325CF007D3C89 /* ViewController.swift in Sources */,
+				18C5450122C33C5C007D3C89 /* Preferenceible.swift in Sources */,
 				18C544F822C3269B007D3C89 /* Entity.swift in Sources */,
 				18C544FE22C3269B007D3C89 /* TakePhotoType.swift in Sources */,
-				18C544F222C3269B007D3C89 /* DefaultEnumable.swift in Sources */,
-				18C544F422C3269B007D3C89 /* DefaultObjectable.swift in Sources */,
+				18C544F222C3269B007D3C89 /* PreferenceEnumible.swift in Sources */,
+				18C544F422C3269B007D3C89 /* PreferenceObjectible.swift in Sources */,
 				18C544FA22C3269B007D3C89 /* DefaultConfig.swift in Sources */,
 				18C544FC22C3269B007D3C89 /* Person.swift in Sources */,
 				18C544B722C325CF007D3C89 /* AppDelegate.swift in Sources */,
@@ -236,11 +241,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18C544F322C3269B007D3C89 /* DefaultEnumable.swift in Sources */,
+				18C544F322C3269B007D3C89 /* PreferenceEnumible.swift in Sources */,
 				18C544F922C3269B007D3C89 /* Entity.swift in Sources */,
+				18C5450222C33C5C007D3C89 /* Preferenceible.swift in Sources */,
 				18C544CC22C325D0007D3C89 /* SwiftyDefaultsTests.swift in Sources */,
 				18C544FD22C3269B007D3C89 /* Person.swift in Sources */,
-				18C544F522C3269B007D3C89 /* DefaultObjectable.swift in Sources */,
+				18C544F522C3269B007D3C89 /* PreferenceObjectible.swift in Sources */,
 				18C544FB22C3269B007D3C89 /* DefaultConfig.swift in Sources */,
 				18C544FF22C3269B007D3C89 /* TakePhotoType.swift in Sources */,
 			);

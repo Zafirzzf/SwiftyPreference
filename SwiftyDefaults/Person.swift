@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct Person: DefaultObjectable {
+struct Person: PreferenceObjectible {
     var name = "zafir"
 }

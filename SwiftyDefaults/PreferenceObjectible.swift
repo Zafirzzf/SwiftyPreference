@@ -9,11 +9,11 @@
 import Foundation
 
 /// 使对象通过codable存储到Userdefault
-protocol DefaultObjectable where Self: Codable {
+protocol PreferenceObjectible where Self: Codable {
     
 }
 
-extension Optional: DefaultObjectable where Wrapped: DefaultObjectable {
+extension Optional: PreferenceObjectible where Wrapped: PreferenceObjectible {
     
 }
 

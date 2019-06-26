@@ -9,7 +9,7 @@
 
 import Foundation
 
-enum TakePhotoType: Int, DefaultEnumable {
+enum TakePhotoType: Int, PreferenceEnumible {
     case front
     case back
 }

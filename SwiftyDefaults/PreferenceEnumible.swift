@@ -9,12 +9,12 @@
 import Foundation
 
 /// 使枚举可以存储到UserDefault
-protocol DefaultEnumable {
+protocol PreferenceEnumible {
     var theRawValue: Any? { get }
     static func build(with value: Any?) -> Self?
 }
 
-extension RawRepresentable where Self: DefaultEnumable {
+extension RawRepresentable where Self: PreferenceEnumible {
     var theRawValue: Any? {
         return self.rawValue
     }
@@ -24,7 +24,7 @@ extension RawRepresentable where Self: DefaultEnumable {
     }
 }
 
-extension Optional: DefaultEnumable where Wrapped: DefaultEnumable {
+extension Optional: PreferenceEnumible where Wrapped: PreferenceEnumible {
     var theRawValue: Any? {
         switch self {
         case .some(let wrapped):
