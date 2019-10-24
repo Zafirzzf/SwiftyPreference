@@ -8,6 +8,16 @@
 
 import Foundation
 
-struct Person: PreferenceObjectible {
+struct Person: PreferenceObjectible, Codable {
     var name = "zafir"
+}
+
+class Animal: PreferenceObjectible {
+    var name = "cat"
+    init() {
+        
+    }
+    init(name: String) {
+        self.name = name
+    }
 }

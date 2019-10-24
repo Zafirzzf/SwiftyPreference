@@ -12,51 +12,61 @@ import XCTest
 class SwiftyDefaultsTests: XCTestCase {
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        UserDefaults.standard.dictionaryRepresentation().forEach {
+            UserDefaults.standard.removeObject(forKey: $0.key)
+        }
     }
 
     func testNormalType() {
-        XCTAssertTrue(DefaultConfig.token.value == "defaultValue")
-        DefaultConfig.token.value = "xxx"
-        XCTAssertTrue(DefaultConfig.token.value == "xxx")
-        XCTAssertTrue(DefaultConfig.userId.value == "")
-        XCTAssertTrue(DefaultConfig.name.value == nil)
-        DefaultConfig.name.value = "ccc"
-        XCTAssertTrue(DefaultConfig.name.value == "ccc")
+        XCTAssertTrue(Defaults[.token] == "defaultValue")
+        Defaults[.token] = "xxx"
+        XCTAssertTrue(Defaults[.token] == "xxx")
+        XCTAssertTrue(Defaults[.userId] == "")
+        XCTAssertTrue(Defaults[.name] == nil)
+        Defaults[.name] = "ccc"
+        XCTAssertTrue(Defaults[.name] == "ccc")
     }
     
     func testObjectTypeDefaultValue() {
-        XCTAssertTrue(DefaultConfig.perosn.value.name == "zafir")
-        XCTAssertTrue(DefaultConfig.person2.value?.name == nil)
+        XCTAssertTrue(Defaults[.person].name == "zafir")
+        XCTAssertTrue(Defaults[.person2]?.name == nil)
     }
     
     func testObjectTypeSetValue() {
-        DefaultConfig.perosn.value = Person(name: "aloha")
-        XCTAssertTrue(DefaultConfig.perosn.value.name == "aloha")
+        Defaults[.person] = Person(name: "aloha")
+        XCTAssertTrue(Defaults[.person].name == "aloha")
     }
     
     func testOptionalObjectTypeSetValue() {
-        DefaultConfig.person2.remove()
-        XCTAssertTrue(DefaultConfig.person2.value == nil)
-        DefaultConfig.person2.value = Person(name: "jackson")
-        XCTAssertTrue(DefaultConfig.person2.value?.name == "jackson")
+        Defaults[.person2] = nil
+        XCTAssertTrue(Defaults[.person2] == nil)
+        Defaults[.person2] = Person(name: "jackson")
+        XCTAssertTrue(Defaults[.person2]?.name == "jackson")
     }
     
     func testEnumTypeDefaultValue() {
-        XCTAssertTrue(DefaultConfig.photoType.value == .front)
-        XCTAssertTrue(DefaultConfig.photoType2.value == nil)
+        XCTAssertTrue(Defaults[.photoType] == .front)
+        XCTAssertTrue(Defaults[.photoType2] == nil)
     }
     
     func testEnumTypeSetValue() {
-        DefaultConfig.photoType.value = .front
-        XCTAssertTrue(DefaultConfig.photoType.value == .front)
+        Defaults[.photoType] = .front
+        XCTAssertTrue(Defaults[.photoType] == .front)
     }
     
     func testOptionalEnumTypeSetValue() {
-        DefaultConfig.photoType2.remove()
-        XCTAssertTrue(DefaultConfig.photoType2.value == nil)
-        DefaultConfig.photoType2.value = .back
-        XCTAssertTrue(DefaultConfig.photoType2.value == .back)
+        Defaults[.photoType2] = nil
+        XCTAssertTrue(Defaults[.photoType2] == nil)
+        Defaults[.photoType2] = .back
+        XCTAssertTrue(Defaults[.photoType2] == .back)
+    }
+    
+    func testRemoveObject() {
+        XCTAssertTrue(Defaults[.person].name == "zafir")
+        Defaults[.person].name = "lele"
+        XCTAssertTrue(Defaults[.person].name == "lele")
+        Defaults.remove(key: .person)
+        XCTAssertTrue(Defaults[.person].name == "zafir")
     }
 
     func testExample() {

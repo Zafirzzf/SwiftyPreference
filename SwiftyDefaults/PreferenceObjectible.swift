@@ -9,13 +9,14 @@
 import Foundation
 
 /// 使对象通过codable存储到Userdefault
-protocol PreferenceObjectible where Self: Codable {
+protocol PreferenceObjectible: Codable {
     
 }
 
 extension Optional: PreferenceObjectible where Wrapped: PreferenceObjectible {
     
 }
+
 
 extension Encodable {
     var toData: Data? {

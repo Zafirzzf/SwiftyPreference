@@ -31,16 +31,3 @@ class Entity<T>: Preferenceible {
         remove(with: key)
     }
 }
-
-// MARK: - 为特定Type添加对应Type的defaultValue
-extension Entity where T: ExpressibleByNilLiteral {
-    convenience init(key: String) {
-        self.init(key: key, defaultValue: nil)
-    }
-}
-
-extension Entity where T == String {
-    convenience init(key: String) {
-        self.init(key: key, defaultValue: "")
-    }
-}
