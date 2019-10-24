@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Person: PreferenceObjectible, Codable {
+struct Person: Preferenceible, Codable {
     var name = "zafir"
 }
 
-class Animal: PreferenceObjectible {
+class Animal: Preferenceible, Codable {
     var name = "cat"
     init() {
         

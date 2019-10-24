@@ -12,6 +12,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let value = Defaults[.person2]
+        Defaults[.person2] = Person(name: "aaa")
+        let value2 = Defaults[.person2]
 
         // please review in SwiftyDefaultsTests.swift
     }

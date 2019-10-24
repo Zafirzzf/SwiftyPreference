@@ -9,7 +9,7 @@
 import Foundation
 
 class Defaults {
-    static subscript<T>(key: DefaultsKey<T>) -> T {
+    static subscript<T: Preferenceible>(key: DefaultsKey<T>) -> T {
         get {
             Entity<T>(key: key.key, defaultValue: key.defaultValue).value
         }
@@ -23,7 +23,7 @@ class Defaults {
     }
 }
 
-class DefaultsKey<P> {
+class DefaultsKey<P: Preferenceible> {
     
     let key: String
     let defaultValue: P

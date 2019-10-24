@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Entity<T>: Preferenceible {
+class Entity<T: Preferenceible> {
     typealias ValueType = T
     private let key: String
     private let defaultValue: T
@@ -20,14 +20,10 @@ class Entity<T>: Preferenceible {
     
     var value: T {
         get {
-            return getValue(from: key) ?? defaultValue
+            return T.getValue(from: key) ?? defaultValue
         }
         set {
-            saveValue(with: newValue, key: key)
+            T.saveValue(with: newValue, key: key)
         }
-    }
-    
-    func remove() {
-        remove(with: key)
     }
 }

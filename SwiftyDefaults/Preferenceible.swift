@@ -9,40 +9,69 @@
 import Foundation
 
 protocol Preferenceible {
-    associatedtype ValueType
-    func getValue(from key: String) -> ValueType?
-    func saveValue(with value: ValueType, key: String)
-    func remove(with key: String)
+    static func getValue(from key: String) -> Self?
+    static func saveValue(with value: Self, key: String)
+    static func remove(with key: String)
 }
 
 extension Preferenceible {
-    func getValue(from key: String) -> ValueType? {
-        switch ValueType.self {
-        case let defaultObject as PreferenceObjectible.Type:
-            let data = UserDefaults.standard.value(forKey: key) as? Data
-            return data.flatMap { defaultObject.decode(from: $0) }
-                .flatMap { $0 as? ValueType }
-        case let enumType as PreferenceEnumible.Type:
-            let value = UserDefaults.standard.object(forKey: key)
-            return value.flatMap { enumType.build(with: $0) }
-                .flatMap { $0 as? ValueType }
-        default:
-            return UserDefaults.standard.object(forKey: key).flatMap { $0 as? ValueType }
-        }
+    static func getValue(from key: String) -> Self? {
+        return UserDefaults.standard.object(forKey: key).flatMap { $0 as? Self }
     }
     
-    func saveValue(with value: ValueType, key: String) {
-        switch value {
-        case let object as PreferenceObjectible:
-            UserDefaults.standard.set(object.toData, forKey: key)
-        case let enumValue as PreferenceEnumible:
-            UserDefaults.standard.set(enumValue.theRawValue, forKey: key)
-        default:
-            UserDefaults.standard.set(value, forKey: key)
-        }
+    static func saveValue(with value: Self, key: String) {
+        UserDefaults.standard.setValue(value, forKey: key)
     }
     
-    func remove(with key: String) {
+    static func remove(with key: String) {
         UserDefaults.standard.removeObject(forKey: key)
     }
 }
+
+extension Preferenceible where Self: Codable {
+    static func getValue(from key: String) -> Self? {
+        let data = UserDefaults.standard.value(forKey: key) as? Data
+        return data.flatMap { Self.decode(from: $0) }
+    }
+    
+    static func saveValue(with value: Self, key: String) {
+        UserDefaults.standard.set(value.toData, forKey: key)
+    }
+}
+
+extension Preferenceible where Self: RawRepresentable {
+    static func getValue(from key: String) -> Self? {
+        (UserDefaults.standard.object(forKey: key) as? Self.RawValue).flatMap { Self.init(rawValue: $0) }
+    }
+       
+    static func saveValue(with value: Self, key: String) {
+        UserDefaults.standard.set(value.rawValue, forKey: key)
+    }
+}
+
+extension Optional: Preferenceible where Wrapped: Preferenceible {
+    static func getValue(from key: String) -> Optional<Wrapped>? {
+        return Wrapped.getValue(from: key)
+    }
+    
+    static func saveValue(with value: Optional<Wrapped>, key: String) {
+        switch value {
+        case .some(let value):
+            Wrapped.saveValue(with: value, key: key)
+        case .none:
+            UserDefaults.standard.setValue(nil, forKey: key)
+        }
+    }
+}
+
+extension String: Preferenceible { }
+extension Bool: Preferenceible { }
+extension Int: Preferenceible { }
+extension Double: Preferenceible { }
+extension Float: Preferenceible { }
+extension Data: Preferenceible { }
+extension URL: Preferenceible { }
+extension Date: Preferenceible { }
+extension Array: Preferenceible { }
+extension Dictionary: Preferenceible { }
+
