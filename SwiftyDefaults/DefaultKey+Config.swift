@@ -9,12 +9,28 @@
 import Foundation
 
 extension DefaultsKey {
-    static var token: DefaultsKey<String> { .init(key: "token", defaultValue: "defaultValue") }
-    static var userId: DefaultsKey<String> { .init(key: "userId", defaultValue: "") }
-    static var name: DefaultsKey<String?> { .init(key: "name") }
-    static var person: DefaultsKey<Person> { .init(key: "person", defaultValue: Person()) }
-    static var person2: DefaultsKey<Person?> { .init(key: "person2") }
-    static var photoType: DefaultsKey<TakePhotoType> { .init(key: "photoType", defaultValue: .front) }
-    static var photoType2: DefaultsKey<TakePhotoType?> { .init(key: "photoType2") }
-    static var animal: DefaultsKey<Animal> { .init(key: "animal", defaultValue: Animal()) }
+    static var token: DefaultsKey<String> {
+        .init(key: "token", defaultValue: "defaultValue")
+    }
+    static var userId: DefaultsKey<String> {
+        .init(key: "userId", defaultValue: "")
+    }
+    static var name: DefaultsKey<String?> {
+        .init(key: "name")
+    }
+    static var person: DefaultsKey<Person> {
+        .init(key: "person", defaultValue: Person())
+    }
+    static var person2: DefaultsKey<Person?> {
+        .init(key: "person2")
+    }
+    static var photoType: DefaultsKey<TakePhotoType> {
+        .init(key: "photoType", defaultValue: .front)
+    }
+    static var photoType2: DefaultsKey<TakePhotoType?> {
+        .init(key: "photoType2")
+    }
+    static var animal: DefaultsKey<Animal> {
+        .init(key: "animal", defaultValue: Animal())
+    }
 }

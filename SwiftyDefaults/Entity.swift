@@ -12,18 +12,20 @@ class Entity<T: Preferenceible> {
     typealias ValueType = T
     private let key: String
     private let defaultValue: T
+    private let userDefaults: UserDefaults
     
-    init(key: String, defaultValue: T) {
+    init(key: String, defaultValue: T, userDefaults: UserDefaults) {
         self.key = key
         self.defaultValue = defaultValue
+        self.userDefaults = userDefaults
     }
     
     var value: T {
         get {
-            return T.getValue(from: key) ?? defaultValue
+            return T.getValue(from: key, userDefaults: userDefaults) ?? defaultValue
         }
         set {
-            T.saveValue(with: newValue, key: key)
+            T.saveValue(with: newValue, key: key, userDefaults: userDefaults)
         }
     }
 }
