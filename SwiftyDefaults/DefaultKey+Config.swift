@@ -33,4 +33,10 @@ extension DefaultsKey {
     static var animal: DefaultsKey<Animal> {
         .init(key: "animal", defaultValue: Animal())
     }
+    static var friends: DefaultsKey<[String]> {
+        .init(key: "friends", defaultValue: [])
+    }
+    static var family: DefaultsKey<[Person]> {
+        .init(key: "family", defaultValue: [])
+    }
 }

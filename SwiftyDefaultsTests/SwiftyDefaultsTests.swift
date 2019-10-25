@@ -69,6 +69,18 @@ class SwiftyDefaultsTests: XCTestCase {
         XCTAssertTrue(Defaults[.person].name == "zafir")
     }
 
+    func testBasicArray() {
+        Defaults[.friends] = ["a", "bc"]
+        XCTAssertTrue(Defaults[.friends] == ["a", "bc"])
+        Defaults[.friends] = []
+        XCTAssertTrue(Defaults[.friends] == [])
+    }
+    
+    func testObjectArray() {
+        Defaults[.family] = [Person(name: "a"), Person(name: "b")]
+        XCTAssertTrue(Defaults[.family].count == 2)
+    }
+    
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

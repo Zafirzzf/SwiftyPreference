@@ -30,7 +30,7 @@ extension Preferenceible {
 
 extension Preferenceible where Self: Codable {
     static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
-        let data = userDefaults.value(forKey: key) as? Data
+        let data = userDefaults.object(forKey: key) as? Data
         return data.flatMap { Self.decode(from: $0) }
     }
     
@@ -72,6 +72,14 @@ extension Float: Preferenceible { }
 extension Data: Preferenceible { }
 extension URL: Preferenceible { }
 extension Date: Preferenceible { }
-extension Array: Preferenceible { }
 extension Dictionary: Preferenceible { }
+extension Array: Preferenceible where Element: Codable {
+    static func getValue(from key: String, userDefaults: UserDefaults) -> Array<Element>? {
+        let data = userDefaults.object(forKey: key) as? Data
+        return data.flatMap { Self.decode(from: $0) }
+    }
+    static func saveValue(with value: Array<Element>, key: String, userDefaults: UserDefaults) {
+        userDefaults.set(value.toData, forKey: key)
+    }
+}
 
