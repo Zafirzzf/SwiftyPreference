@@ -12,8 +12,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let value = Defaults[.name]
-        print(value)
+        print(TokenWorkSpace.token22)
+        TokenWorkSpace.token22 = "aaa"
+        
         // please review in SwiftyDefaultsTests.swift
     }
 }

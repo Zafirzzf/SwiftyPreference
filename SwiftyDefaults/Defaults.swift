@@ -13,54 +13,46 @@ enum DefaultsScope {
     case loginUser
 }
 
-private let notLoginUserSuitName = "com.wealoha.empty"
+private let defaultSuitName = "com.wealoha.empty"
 
 class Defaults {
-    fileprivate static var loginUserId: String = notLoginUserSuitName
+    fileprivate static var userSuitName: String = defaultSuitName
     
     static func registCurrentUser(of userId: String) {
-        loginUserId = userId
+        userSuitName = userId
     }
     
     static func logoutCurrentUser() {
-        loginUserId = notLoginUserSuitName
-    }
-    
-    static subscript<T: Preferenceible>(key: DefaultsKey<T>) -> T {
-        get {
-            Entity<T>(key: key.key, defaultValue: key.defaultValue, userDefaults: key.defaults).value
-        }
-        set {
-            Entity<T>(key: key.key, defaultValue: key.defaultValue, userDefaults: key.defaults).value = newValue
-        }
-    }
-    
-    static func remove<T>(key: DefaultsKey<T>) {
-        UserDefaults.standard.removeObject(forKey: key.key)
+        userSuitName = defaultSuitName
     }
 }
 
-class DefaultsKey<P: Preferenceible> {
+
+@propertyWrapper
+struct DefaultsKey<P: Preferenceible> {
     
     let key: String
     let defaultValue: P
     let defaults: UserDefaults
     
+    var wrappedValue: P {
+        get {
+            Entity<P>(key: key, defaultValue: defaultValue, userDefaults: defaults).value
+        }
+        set {
+            Entity<P>(key: key, defaultValue: defaultValue, userDefaults: defaults).value = newValue
+        }
+    }
+    
     init(key: String, defaultValue: P, scope: DefaultsScope = .global) {
         self.key = key
         self.defaultValue = defaultValue
         if scope == .loginUser {
-            let userDefaults = UserDefaults(suiteName: Defaults.loginUserId)
+            let userDefaults = UserDefaults(suiteName: Defaults.userSuitName)
             assert(userDefaults != nil)
             self.defaults = userDefaults ?? UserDefaults.standard
         } else {
             self.defaults = UserDefaults.standard
         }
-    }
-}
-
-extension DefaultsKey where P: ExpressibleByNilLiteral {
-    convenience init(key: String) {
-        self.init(key: key, defaultValue: nil)
     }
 }
