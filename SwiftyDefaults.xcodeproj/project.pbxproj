@@ -25,8 +25,8 @@
 		18C544FF22C3269B007D3C89 /* TakePhotoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544F122C3269B007D3C89 /* TakePhotoType.swift */; };
 		18C5450122C33C5C007D3C89 /* Preferenceible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5450022C33C5C007D3C89 /* Preferenceible.swift */; };
 		18C5450222C33C5C007D3C89 /* Preferenceible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C5450022C33C5C007D3C89 /* Preferenceible.swift */; };
-		18F74DA323606EBC007DF8C8 /* DefaultKey+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F74DA223606EBC007DF8C8 /* DefaultKey+Config.swift */; };
-		18F74DA523607131007DF8C8 /* DefaultKey+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F74DA223606EBC007DF8C8 /* DefaultKey+Config.swift */; };
+		18F74DA323606EBC007DF8C8 /* DefaultsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F74DA223606EBC007DF8C8 /* DefaultsConfig.swift */; };
+		18F74DA523607131007DF8C8 /* DefaultsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F74DA223606EBC007DF8C8 /* DefaultsConfig.swift */; };
 		18F74DA623607163007DF8C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544B822C325CF007D3C89 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +57,7 @@
 		18C544F022C3269B007D3C89 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		18C544F122C3269B007D3C89 /* TakePhotoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoType.swift; sourceTree = "<group>"; };
 		18C5450022C33C5C007D3C89 /* Preferenceible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferenceible.swift; sourceTree = "<group>"; };
-		18F74DA223606EBC007DF8C8 /* DefaultKey+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DefaultKey+Config.swift"; sourceTree = "<group>"; };
+		18F74DA223606EBC007DF8C8 /* DefaultsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				18C544B622C325CF007D3C89 /* AppDelegate.swift */,
-				18F74DA223606EBC007DF8C8 /* DefaultKey+Config.swift */,
+				18F74DA223606EBC007DF8C8 /* DefaultsConfig.swift */,
 				18C544EF22C3269B007D3C89 /* Defaults.swift */,
 				18C544EE22C3269B007D3C89 /* Entity.swift */,
 				18C5450022C33C5C007D3C89 /* Preferenceible.swift */,
@@ -232,7 +232,7 @@
 				18C544FE22C3269B007D3C89 /* TakePhotoType.swift in Sources */,
 				18C544F422C3269B007D3C89 /* Codable+ToData.swift in Sources */,
 				18C544FA22C3269B007D3C89 /* Defaults.swift in Sources */,
-				18F74DA323606EBC007DF8C8 /* DefaultKey+Config.swift in Sources */,
+				18F74DA323606EBC007DF8C8 /* DefaultsConfig.swift in Sources */,
 				18C544FC22C3269B007D3C89 /* Person.swift in Sources */,
 				18C544B722C325CF007D3C89 /* AppDelegate.swift in Sources */,
 			);
@@ -250,7 +250,7 @@
 				18C544F522C3269B007D3C89 /* Codable+ToData.swift in Sources */,
 				18C544FB22C3269B007D3C89 /* Defaults.swift in Sources */,
 				18C544FF22C3269B007D3C89 /* TakePhotoType.swift in Sources */,
-				18F74DA523607131007DF8C8 /* DefaultKey+Config.swift in Sources */,
+				18F74DA523607131007DF8C8 /* DefaultsConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

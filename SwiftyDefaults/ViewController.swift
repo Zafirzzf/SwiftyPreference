@@ -10,11 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @DefaultsKey(key: "a")
+    var testKey: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(TokenWorkSpace.token22)
-        TokenWorkSpace.token22 = "aaa"
-        
         // please review in SwiftyDefaultsTests.swift
     }
 }

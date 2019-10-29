@@ -27,13 +27,17 @@ class Defaults {
     }
 }
 
-
 @propertyWrapper
 struct DefaultsKey<P: Preferenceible> {
     
-    let key: String
-    let defaultValue: P
-    let defaults: UserDefaults
+    private let key: String
+    private let defaultValue: P
+    private let defaults: UserDefaults
+    
+    var projectedValue: Self {
+      get { self }
+      set { self = newValue }
+    }
     
     var wrappedValue: P {
         get {
@@ -47,6 +51,23 @@ struct DefaultsKey<P: Preferenceible> {
     init(key: String, defaultValue: P, scope: DefaultsScope = .global) {
         self.key = key
         self.defaultValue = defaultValue
+        if scope == .loginUser {
+            let userDefaults = UserDefaults(suiteName: Defaults.userSuitName)
+            assert(userDefaults != nil)
+            self.defaults = userDefaults ?? UserDefaults.standard
+        } else {
+            self.defaults = UserDefaults.standard
+        }
+    }
+    
+    func remove() {
+        defaults.removeObject(forKey: key)
+    }
+}
+extension DefaultsKey where P: ExpressibleByNilLiteral {
+    init(key: String, scope: DefaultsScope = .global) {
+        self.key = key
+        self.defaultValue = nil
         if scope == .loginUser {
             let userDefaults = UserDefaults(suiteName: Defaults.userSuitName)
             assert(userDefaults != nil)

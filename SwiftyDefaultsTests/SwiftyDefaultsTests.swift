@@ -1,6 +1,6 @@
 //
-//  SwiftyDefaultsTests.swift
-//  SwiftyDefaultsTests
+//  SwiftyDefaultsConfigTests.swift
+//  SwiftyDefaultsConfigTests
 //
 //  Created by 周正飞 on 2019/6/26.
 //  Copyright © 2019 周正飞. All rights reserved.
@@ -12,73 +12,74 @@ import XCTest
 class SwiftyDefaultsTests: XCTestCase {
 
     override func setUp() {
+        
         UserDefaults.standard.dictionaryRepresentation().forEach {
             UserDefaults.standard.removeObject(forKey: $0.key)
         }
     }
 
     func testNormalType() {
-        XCTAssertTrue(Defaults[.token] == "defaultValue")
-        Defaults[.token] = "xxx"
-        XCTAssertTrue(Defaults[.token] == "xxx")
-        XCTAssertTrue(Defaults[.userId] == "")
-        XCTAssertTrue(Defaults[.name] == nil)
-        Defaults[.name] = "ccc"
-        XCTAssertTrue(Defaults[.name] == "ccc")
+        XCTAssertTrue(DefaultsConfig.token == "defaultValue")
+        DefaultsConfig.token = "xxx"
+        XCTAssertTrue(DefaultsConfig.token == "xxx")
+        XCTAssertTrue(DefaultsConfig.userId == "")
+        XCTAssertTrue(DefaultsConfig.name == nil)
+        DefaultsConfig.name = "ccc"
+        XCTAssertTrue(DefaultsConfig.name == "ccc")
     }
     
     func testObjectTypeDefaultValue() {
-        XCTAssertTrue(Defaults[.person].name == "zafir")
-        XCTAssertTrue(Defaults[.person2]?.name == nil)
+        XCTAssertTrue(DefaultsConfig.person.name == "zafir")
+        XCTAssertTrue(DefaultsConfig.person2?.name == nil)
     }
     
     func testObjectTypeSetValue() {
-        Defaults[.person] = Person(name: "aloha")
-        XCTAssertTrue(Defaults[.person].name == "aloha")
+        DefaultsConfig.person = Person(name: "aloha")
+        XCTAssertTrue(DefaultsConfig.person.name == "aloha")
     }
     
     func testOptionalObjectTypeSetValue() {
-        Defaults[.person2] = nil
-        XCTAssertTrue(Defaults[.person2] == nil)
-        Defaults[.person2] = Person(name: "jackson")
-        XCTAssertTrue(Defaults[.person2]?.name == "jackson")
+        DefaultsConfig.person2 = nil
+        XCTAssertTrue(DefaultsConfig.person2 == nil)
+        DefaultsConfig.person2 = Person(name: "jackson")
+        XCTAssertTrue(DefaultsConfig.person2?.name == "jackson")
     }
     
     func testEnumTypeDefaultValue() {
-        XCTAssertTrue(Defaults[.photoType] == .front)
-        XCTAssertTrue(Defaults[.photoType2] == nil)
+        XCTAssertTrue(DefaultsConfig.photoType == .front)
+        XCTAssertTrue(DefaultsConfig.photoType2 == nil)
     }
     
     func testEnumTypeSetValue() {
-        Defaults[.photoType] = .front
-        XCTAssertTrue(Defaults[.photoType] == .front)
+        DefaultsConfig.photoType = .front
+        XCTAssertTrue(DefaultsConfig.photoType == .front)
     }
     
     func testOptionalEnumTypeSetValue() {
-        Defaults[.photoType2] = nil
-        XCTAssertTrue(Defaults[.photoType2] == nil)
-        Defaults[.photoType2] = .back
-        XCTAssertTrue(Defaults[.photoType2] == .back)
+        DefaultsConfig.photoType2 = nil
+        XCTAssertTrue(DefaultsConfig.photoType2 == nil)
+        DefaultsConfig.photoType2 = .back
+        XCTAssertTrue(DefaultsConfig.photoType2 == .back)
     }
     
     func testRemoveObject() {
-        XCTAssertTrue(Defaults[.person].name == "zafir")
-        Defaults[.person].name = "lele"
-        XCTAssertTrue(Defaults[.person].name == "lele")
-        Defaults.remove(key: .person)
-        XCTAssertTrue(Defaults[.person].name == "zafir")
+        XCTAssertTrue(DefaultsConfig.person.name == "zafir")
+        DefaultsConfig.person.name = "lele"
+        XCTAssertTrue(DefaultsConfig.person.name == "lele")
+        DefaultsConfig.$person.remove()
+        XCTAssertTrue(DefaultsConfig.person.name == "zafir")
     }
 
     func testBasicArray() {
-        Defaults[.friends] = ["a", "bc"]
-        XCTAssertTrue(Defaults[.friends] == ["a", "bc"])
-        Defaults[.friends] = []
-        XCTAssertTrue(Defaults[.friends] == [])
+        DefaultsConfig.friends = ["a", "bc"]
+        XCTAssertTrue(DefaultsConfig.friends == ["a", "bc"])
+        DefaultsConfig.friends = []
+        XCTAssertTrue(DefaultsConfig.friends == [])
     }
     
     func testObjectArray() {
-        Defaults[.family] = [Person(name: "a"), Person(name: "b")]
-        XCTAssertTrue(Defaults[.family].count == 2)
+        DefaultsConfig.family = [Person(name: "a"), Person(name: "b")]
+        XCTAssertTrue(DefaultsConfig.family.count == 2)
     }
     
     func testExample() {
