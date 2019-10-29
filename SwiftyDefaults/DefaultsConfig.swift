@@ -12,7 +12,7 @@ struct DefaultsConfig {
     @DefaultsKey(key: "token", defaultValue: "defaultValue")
     static var token: String
     
-    @DefaultsKey(key: "userId", defaultValue: "")
+    @DefaultsKey(key: "userId", defaultValue: "asdf")
        static var userId: String
 
     @DefaultsKey(key: "name")

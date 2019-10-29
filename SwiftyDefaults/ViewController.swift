@@ -9,12 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @DefaultsKey(key: "a")
-    var testKey: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(DefaultsConfig.userId)
         // please review in SwiftyDefaultsTests.swift
     }
 }
