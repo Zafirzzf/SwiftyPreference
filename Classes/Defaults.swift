@@ -8,22 +8,34 @@
 
 import Foundation
 
-public enum DefaultsScope {
-    case global
-    case loginUser
+public enum DefaultsType {
+    case device
+    case user
 }
 
-private let defaultSuitName = "com.wealoha.empty"
-
 public class Defaults {
-    fileprivate static var userSuitName: String = defaultSuitName
+    static let deviceDefaultsKey = "com.aloha.deviceDefaults"
+    static let userDefaultsKey = "com.aloha.userDefaults"
+    static var deviceDefaults = UserDefaults(suiteName: Defaults.deviceDefaultsKey) ?? UserDefaults.standard
+    static var userDefaults = UserDefaults(suiteName: Defaults.userDefaultsKey) ?? UserDefaults.standard
+
     
     public static func registCurrentUser(of userId: String) {
-        userSuitName = userId
+        guard let tmpDefault = UserDefaults(suiteName: userDefaultsKey + userId) else { return }
+        if !tmpDefault.dictionaryRepresentation().keys.isEmpty {
+            tmpDefault.dictionaryRepresentation().forEach {
+                userDefaults.set($0.value, forKey: $0.key)
+            }
+        }
     }
     
-    public static func logoutCurrentUser() {
-        userSuitName = defaultSuitName
+    public static func logout(with userId: String) {
+        guard let theUserDefaults = UserDefaults(suiteName: userDefaultsKey + userId) else { return }
+        userDefaults.dictionaryRepresentation().forEach {
+            theUserDefaults.set($0.value, forKey: $0.key)
+            userDefaults.removeObject(forKey: $0.key)
+        }
+        userDefaults = UserDefaults(suiteName: Defaults.userDefaultsKey) ?? UserDefaults.standard
     }
 }
 
@@ -48,32 +60,21 @@ public struct DefaultsKey<P: Preferenceible> {
         }
     }
     
-    public init(key: String, defaultValue: P, scope: DefaultsScope = .global) {
+    public init(key: String, defaultValue: P, type: DefaultsType = .user) {
         self.key = key
         self.defaultValue = defaultValue
-        if scope == .loginUser {
-            let userDefaults = UserDefaults(suiteName: Defaults.userSuitName)
-            assert(userDefaults != nil)
-            self.defaults = userDefaults ?? UserDefaults.standard
-        } else {
-            self.defaults = UserDefaults.standard
-        }
+        self.defaults = type == .device ? Defaults.deviceDefaults : Defaults.userDefaults
     }
     
     public func remove() {
         defaults.removeObject(forKey: key)
     }
 }
+
 extension DefaultsKey where P: ExpressibleByNilLiteral {
-    init(key: String, scope: DefaultsScope = .global) {
+    init(key: String, type: DefaultsType = .user) {
         self.key = key
         self.defaultValue = nil
-        if scope == .loginUser {
-            let userDefaults = UserDefaults(suiteName: Defaults.userSuitName)
-            assert(userDefaults != nil)
-            self.defaults = userDefaults ?? UserDefaults.standard
-        } else {
-            self.defaults = UserDefaults.standard
-        }
+        self.defaults = type == .device ? Defaults.deviceDefaults : Defaults.userDefaults
     }
 }

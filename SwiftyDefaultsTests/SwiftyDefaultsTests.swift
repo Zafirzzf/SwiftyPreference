@@ -82,6 +82,23 @@ class SwiftyDefaultsTests: XCTestCase {
         XCTAssertTrue(DefaultsConfig.family.count == 2)
     }
     
+    func testLoginAndLogout() {
+        DefaultsConfig.user = Person(name: "aa")
+        Defaults.registCurrentUser(of: "userId")
+        XCTAssert(DefaultsConfig.user?.name == "aa")
+        Defaults.logout(with: "userId")
+        XCTAssert(DefaultsConfig.user?.name == nil)
+        Defaults.registCurrentUser(of: "userId")
+        XCTAssert(DefaultsConfig.user?.name == "aa")
+        Defaults.logout(with: "userId")
+        Defaults.registCurrentUser(of: "userId2")
+        DefaultsConfig.user = Person(name: "bb")
+        Defaults.logout(with: "userId2")
+        XCTAssert(DefaultsConfig.user?.name == nil)
+        Defaults.registCurrentUser(of: "userId")
+        XCTAssert(DefaultsConfig.user?.name == "aa")
+    }
+    
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

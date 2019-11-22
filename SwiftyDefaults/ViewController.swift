@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(DefaultsConfig.userId)
+        print(DefaultsConfig.person.name)
         // please review in SwiftyDefaultsTests.swift
     }
 }

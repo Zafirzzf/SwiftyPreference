@@ -12,7 +12,7 @@ struct DefaultsConfig {
     @DefaultsKey(key: "token", defaultValue: "defaultValue")
     static var token: String
     
-    @DefaultsKey(key: "userId", defaultValue: "asdf")
+    @DefaultsKey(key: "userId", defaultValue: "")
        static var userId: String
 
     @DefaultsKey(key: "name")
@@ -38,6 +38,9 @@ struct DefaultsConfig {
     
     @DefaultsKey(key: "family", defaultValue: [])
     static var family: [Person]
+    
+    @DefaultsKey(key: "user", type: .user)
+    static var user: Person?
 }
 
 
