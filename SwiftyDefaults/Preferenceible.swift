@@ -64,16 +64,116 @@ extension Optional: Preferenceible where Wrapped: Preferenceible {
     }
 }
 
-extension String: Preferenceible { }
-extension Bool: Preferenceible { }
-extension Int: Preferenceible { }
-extension Double: Preferenceible { }
-extension Float: Preferenceible { }
-extension Data: Preferenceible { }
-extension URL: Preferenceible { }
-extension Date: Preferenceible { }
-extension Dictionary: Preferenceible { }
+extension String: Preferenceible {
+    public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
+        return userDefaults.object(forKey: key).flatMap { $0 as? Self }
+    }
+    
+    public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
+        userDefaults.setValue(value, forKey: key)
+    }
+    public static func remove(with key: String, userDefaults: UserDefaults) {
+        userDefaults.removeObject(forKey: key)
+    }
+}
+extension Bool: Preferenceible {
+    public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
+        return userDefaults.object(forKey: key).flatMap { $0 as? Self }
+    }
+    
+    public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
+        userDefaults.setValue(value, forKey: key)
+    }
+}
+extension Int: Preferenceible {
+    public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
+        return userDefaults.object(forKey: key).flatMap { $0 as? Self }
+    }
+    
+    public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
+        userDefaults.setValue(value, forKey: key)
+    }
+    
+    public static func remove(with key: String, userDefaults: UserDefaults) {
+        userDefaults.removeObject(forKey: key)
+    }
+}
+extension Double: Preferenceible {
+    public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
+        return userDefaults.object(forKey: key).flatMap { $0 as? Self }
+    }
+    
+    public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
+        userDefaults.setValue(value, forKey: key)
+    }
+    
+    public static func remove(with key: String, userDefaults: UserDefaults) {
+        userDefaults.removeObject(forKey: key)
+    }
+}
+extension Float: Preferenceible {
+    public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
+        return userDefaults.object(forKey: key).flatMap { $0 as? Self }
+    }
+    
+    public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
+        userDefaults.setValue(value, forKey: key)
+    }
+    
+    public static func remove(with key: String, userDefaults: UserDefaults) {
+        userDefaults.removeObject(forKey: key)
+    }
+}
+extension Data: Preferenceible {
+    public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
+        return userDefaults.object(forKey: key).flatMap { $0 as? Self }
+    }
+    
+    public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
+        userDefaults.setValue(value, forKey: key)
+    }
+    
+    public static func remove(with key: String, userDefaults: UserDefaults) {
+        userDefaults.removeObject(forKey: key)
+    }
+}
+extension URL: Preferenceible {
+    public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
+        return userDefaults.object(forKey: key).flatMap { $0 as? Self }
+    }
+    
+    public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
+        userDefaults.setValue(value, forKey: key)
+    }
+    
+    public static func remove(with key: String, userDefaults: UserDefaults) {
+        userDefaults.removeObject(forKey: key)
+    }
+}
+extension Date: Preferenceible {
+    public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
+        return userDefaults.object(forKey: key).flatMap { $0 as? Self }
+    }
+    
+    public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
+        userDefaults.setValue(value, forKey: key)
+    }
+    
+    public static func remove(with key: String, userDefaults: UserDefaults) {
+        userDefaults.removeObject(forKey: key)
+    }
+}
+extension Dictionary: Preferenceible {
+    public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
+        return userDefaults.object(forKey: key).flatMap { $0 as? Self }
+    }
+    
+    public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
+        userDefaults.setValue(value, forKey: key)
+    }
+}
 extension Array: Preferenceible where Element: Codable {
+    
     public static func getValue(from key: String, userDefaults: UserDefaults) -> Array<Element>? {
         let data = userDefaults.object(forKey: key) as? Data
         return data.flatMap { Self.decode(from: $0) }
