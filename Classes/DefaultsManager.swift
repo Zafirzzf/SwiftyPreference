@@ -35,9 +35,9 @@ public class DefaultsManager {
         }
     }
     
-    public static func directSet(_ value: Any?, for key: String, defaultsType: DefaultsType) {
+    public static func directlySet<P: Preferenceible>(_ value: P, for key: String, defaultsType: DefaultsType) {
         let defaults = defaultsType == .device ? deviceDefaults : userDefaults
-        defaults.setValue(value, forKey: key)
+        Entity<P?>(key: key, defaultValue: nil, userDefaults: defaults).value = value
     }
 }
 
