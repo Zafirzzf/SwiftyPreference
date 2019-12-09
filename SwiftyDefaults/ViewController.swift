@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(DefaultsConfig.person.name)
+        DefaultsManager.directSet(false, for: "adf", defaultsType: .user)
         // please review in SwiftyDefaultsTests.swift
     }
 }

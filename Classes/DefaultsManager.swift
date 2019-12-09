@@ -34,6 +34,11 @@ public class DefaultsManager {
             userDefaults.removeObject(forKey: $0.key)
         }
     }
+    
+    public static func directSet(_ value: Any?, for key: String, defaultsType: DefaultsType) {
+        let defaults = defaultsType == .device ? deviceDefaults : userDefaults
+        defaults.setValue(value, forKey: key)
+    }
 }
 
 @propertyWrapper

@@ -34,6 +34,11 @@ public class DefaultsManager {
             userDefaults.removeObject(forKey: $0.key)
         }
     }
+    
+    public static func directlySet<P: Preferenceible>(_ value: P, for key: String, defaultsType: DefaultsType) {
+        let defaults = defaultsType == .device ? deviceDefaults : userDefaults
+        Entity<P?>(key: key, defaultValue: nil, userDefaults: defaults).value = value
+    }
 }
 
 @propertyWrapper
