@@ -22,10 +22,8 @@ public class DefaultsManager {
     
     public static func registCurrentUser(of userId: String) {
         guard let tmpDefault = UserDefaults(suiteName: userDefaultsKey + userId) else { return }
-        if !tmpDefault.dictionaryRepresentation().keys.isEmpty {
-            tmpDefault.dictionaryRepresentation().forEach {
-                userDefaults.set($0.value, forKey: $0.key)
-            }
+        tmpDefault.dictionaryRepresentation().forEach {
+            userDefaults.set($0.value, forKey: $0.key)
         }
     }
     
@@ -35,7 +33,6 @@ public class DefaultsManager {
             theUserDefaults.set($0.value, forKey: $0.key)
             userDefaults.removeObject(forKey: $0.key)
         }
-        userDefaults = UserDefaults(suiteName: DefaultsManager.userDefaultsKey) ?? UserDefaults.standard
     }
 }
 

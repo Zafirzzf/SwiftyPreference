@@ -13,19 +13,17 @@ public enum DefaultsType {
     case user
 }
 
-public class Defaults {
+public class DefaultsManager {
     static let deviceDefaultsKey = "com.aloha.deviceDefaults"
     static let userDefaultsKey = "com.aloha.userDefaults"
-    static var deviceDefaults = UserDefaults(suiteName: Defaults.deviceDefaultsKey) ?? UserDefaults.standard
-    static var userDefaults = UserDefaults(suiteName: Defaults.userDefaultsKey) ?? UserDefaults.standard
+    static var deviceDefaults = UserDefaults(suiteName: DefaultsManager.deviceDefaultsKey) ?? UserDefaults.standard
+    static var userDefaults = UserDefaults(suiteName: DefaultsManager.userDefaultsKey) ?? UserDefaults.standard
 
     
     public static func registCurrentUser(of userId: String) {
         guard let tmpDefault = UserDefaults(suiteName: userDefaultsKey + userId) else { return }
-        if !tmpDefault.dictionaryRepresentation().keys.isEmpty {
-            tmpDefault.dictionaryRepresentation().forEach {
-                userDefaults.set($0.value, forKey: $0.key)
-            }
+        tmpDefault.dictionaryRepresentation().forEach {
+            userDefaults.set($0.value, forKey: $0.key)
         }
     }
     
@@ -35,7 +33,6 @@ public class Defaults {
             theUserDefaults.set($0.value, forKey: $0.key)
             userDefaults.removeObject(forKey: $0.key)
         }
-        userDefaults = UserDefaults(suiteName: Defaults.userDefaultsKey) ?? UserDefaults.standard
     }
 }
 
@@ -63,7 +60,7 @@ public struct DefaultsKey<P: Preferenceible> {
     public init(key: String, defaultValue: P, type: DefaultsType = .user) {
         self.key = key
         self.defaultValue = defaultValue
-        self.defaults = type == .device ? Defaults.deviceDefaults : Defaults.userDefaults
+        self.defaults = type == .device ? DefaultsManager.deviceDefaults : DefaultsManager.userDefaults
     }
     
     public func remove() {
@@ -72,9 +69,9 @@ public struct DefaultsKey<P: Preferenceible> {
 }
 
 extension DefaultsKey where P: ExpressibleByNilLiteral {
-    init(key: String, type: DefaultsType = .user) {
+    public init(key: String, type: DefaultsType = .user) {
         self.key = key
         self.defaultValue = nil
-        self.defaults = type == .device ? Defaults.deviceDefaults : Defaults.userDefaults
+        self.defaults = type == .device ? DefaultsManager.deviceDefaults : DefaultsManager.userDefaults
     }
 }
