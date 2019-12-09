@@ -84,18 +84,18 @@ class SwiftyDefaultsTests: XCTestCase {
     
     func testLoginAndLogout() {
         DefaultsConfig.user = Person(name: "aa")
-        Defaults.registCurrentUser(of: "userId")
+        DefaultsManager.registCurrentUser(of: "userId")
         XCTAssert(DefaultsConfig.user?.name == "aa")
-        Defaults.logout(with: "userId")
+        DefaultsManager.logout(with: "userId")
         XCTAssert(DefaultsConfig.user?.name == nil)
-        Defaults.registCurrentUser(of: "userId")
+        DefaultsManager.registCurrentUser(of: "userId")
         XCTAssert(DefaultsConfig.user?.name == "aa")
-        Defaults.logout(with: "userId")
-        Defaults.registCurrentUser(of: "userId2")
+        DefaultsManager.logout(with: "userId")
+        DefaultsManager.registCurrentUser(of: "userId2")
         DefaultsConfig.user = Person(name: "bb")
-        Defaults.logout(with: "userId2")
+        DefaultsManager.logout(with: "userId2")
         XCTAssert(DefaultsConfig.user?.name == nil)
-        Defaults.registCurrentUser(of: "userId")
+        DefaultsManager.registCurrentUser(of: "userId")
         XCTAssert(DefaultsConfig.user?.name == "aa")
     }
     

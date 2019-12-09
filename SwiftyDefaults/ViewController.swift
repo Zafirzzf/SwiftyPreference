@@ -12,8 +12,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DefaultsConfig.isLike = true
-        print(DefaultsConfig.isLike)
         print(DefaultsConfig.person.name)
         // please review in SwiftyDefaultsTests.swift
     }

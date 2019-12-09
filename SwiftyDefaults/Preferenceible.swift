@@ -11,18 +11,9 @@ import Foundation
 public protocol Preferenceible {
     static func getValue(from key: String, userDefaults: UserDefaults) -> Self?
     static func saveValue(with value: Self, key: String, userDefaults: UserDefaults)
-    static func remove(with key: String, userDefaults: UserDefaults)
 }
 
 extension Preferenceible {
-    public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
-        return userDefaults.object(forKey: key).flatMap { $0 as? Self }
-    }
-    
-    public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
-        userDefaults.setValue(value, forKey: key)
-    }
-    
     public static func remove(with key: String, userDefaults: UserDefaults) {
         userDefaults.removeObject(forKey: key)
     }
@@ -72,9 +63,6 @@ extension String: Preferenceible {
     public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
         userDefaults.setValue(value, forKey: key)
     }
-    public static func remove(with key: String, userDefaults: UserDefaults) {
-        userDefaults.removeObject(forKey: key)
-    }
 }
 extension Bool: Preferenceible {
     public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
@@ -93,10 +81,6 @@ extension Int: Preferenceible {
     public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
         userDefaults.setValue(value, forKey: key)
     }
-    
-    public static func remove(with key: String, userDefaults: UserDefaults) {
-        userDefaults.removeObject(forKey: key)
-    }
 }
 extension Double: Preferenceible {
     public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
@@ -105,10 +89,6 @@ extension Double: Preferenceible {
     
     public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
         userDefaults.setValue(value, forKey: key)
-    }
-    
-    public static func remove(with key: String, userDefaults: UserDefaults) {
-        userDefaults.removeObject(forKey: key)
     }
 }
 extension Float: Preferenceible {
@@ -119,10 +99,6 @@ extension Float: Preferenceible {
     public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
         userDefaults.setValue(value, forKey: key)
     }
-    
-    public static func remove(with key: String, userDefaults: UserDefaults) {
-        userDefaults.removeObject(forKey: key)
-    }
 }
 extension Data: Preferenceible {
     public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
@@ -131,10 +107,6 @@ extension Data: Preferenceible {
     
     public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
         userDefaults.setValue(value, forKey: key)
-    }
-    
-    public static func remove(with key: String, userDefaults: UserDefaults) {
-        userDefaults.removeObject(forKey: key)
     }
 }
 extension URL: Preferenceible {
@@ -145,10 +117,6 @@ extension URL: Preferenceible {
     public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
         userDefaults.setValue(value, forKey: key)
     }
-    
-    public static func remove(with key: String, userDefaults: UserDefaults) {
-        userDefaults.removeObject(forKey: key)
-    }
 }
 extension Date: Preferenceible {
     public static func getValue(from key: String, userDefaults: UserDefaults) -> Self? {
@@ -157,10 +125,6 @@ extension Date: Preferenceible {
     
     public static func saveValue(with value: Self, key: String, userDefaults: UserDefaults) {
         userDefaults.setValue(value, forKey: key)
-    }
-    
-    public static func remove(with key: String, userDefaults: UserDefaults) {
-        userDefaults.removeObject(forKey: key)
     }
 }
 extension Dictionary: Preferenceible {
