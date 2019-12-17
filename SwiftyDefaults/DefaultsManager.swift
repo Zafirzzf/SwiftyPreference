@@ -55,10 +55,10 @@ public struct DefaultsKey<P: Preferenceible> {
     
     public var wrappedValue: P {
         get {
-            Entity<P>(key: key, defaultValue: defaultValue, userDefaults: defaults).value
+            P.getValue(from: key, userDefaults: defaults) ?? defaultValue
         }
         set {
-            Entity<P>(key: key, defaultValue: defaultValue, userDefaults: defaults).value = newValue
+            P.saveValue(with: newValue, key: key, userDefaults: defaults)
         }
     }
     
