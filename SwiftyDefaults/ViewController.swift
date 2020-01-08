@@ -10,11 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var personObservation: NSObject?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(DefaultsConfig.person.name)
-//        DefaultsManager.directSet(false, for: "adf", defaultsType: .user)
-        // please review in SwiftyDefaultsTests.swift
+
+        DefaultsConfig.person = Person()
+        personObservation = DefaultsConfig.$person.observe { (new) in
+            print("收到变更: ", new)
+        }
+        DefaultsConfig.person = Person(name: "asdf", age: 1, height: 1)
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        present(SecondViewController(), animated: true, completion: nil)
     }
 }
 

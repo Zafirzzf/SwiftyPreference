@@ -68,6 +68,10 @@ public struct DefaultsKey<P: Preferenceible> {
         self.defaults = type == .device ? DefaultsManager.deviceDefaults : DefaultsManager.userDefaults
     }
     
+    public func observe(change: @escaping (_ newVaue: P) -> Void) -> NSObject {
+        DefaultsObservation(key: key, defaults: defaults, onChange: change)
+    }
+    
     public func remove() {
         defaults.removeObject(forKey: key)
     }

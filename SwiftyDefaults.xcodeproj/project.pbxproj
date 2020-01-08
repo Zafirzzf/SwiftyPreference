@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18073DBE23C589B000D561F9 /* DefaultsObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18073DBD23C589B000D561F9 /* DefaultsObservation.swift */; };
+		18073DBF23C589B000D561F9 /* DefaultsObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18073DBD23C589B000D561F9 /* DefaultsObservation.swift */; };
+		18073DC123C5B1E000D561F9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18073DC023C5B1E000D561F9 /* SecondViewController.swift */; };
+		18073DC223C5B1E000D561F9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18073DC023C5B1E000D561F9 /* SecondViewController.swift */; };
 		18C544B722C325CF007D3C89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544B622C325CF007D3C89 /* AppDelegate.swift */; };
 		18C544B922C325CF007D3C89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C544B822C325CF007D3C89 /* ViewController.swift */; };
 		18C544BC22C325CF007D3C89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C544BA22C325CF007D3C89 /* Main.storyboard */; };
@@ -39,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18073DBD23C589B000D561F9 /* DefaultsObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsObservation.swift; sourceTree = "<group>"; };
+		18073DC023C5B1E000D561F9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		18C544B322C325CF007D3C89 /* SwiftyDefaults.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyDefaults.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C544B622C325CF007D3C89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18C544B822C325CF007D3C89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,10 +106,12 @@
 				18F74DA223606EBC007DF8C8 /* DefaultsConfig.swift */,
 				18C544EF22C3269B007D3C89 /* DefaultsManager.swift */,
 				18C5450022C33C5C007D3C89 /* Preferenceible.swift */,
+				18073DBD23C589B000D561F9 /* DefaultsObservation.swift */,
 				18C544EC22C3269B007D3C89 /* Codable+ToData.swift */,
 				18C544F022C3269B007D3C89 /* Person.swift */,
 				18C544F122C3269B007D3C89 /* TakePhotoType.swift */,
 				18C544B822C325CF007D3C89 /* ViewController.swift */,
+				18073DC023C5B1E000D561F9 /* SecondViewController.swift */,
 				18C544BA22C325CF007D3C89 /* Main.storyboard */,
 				18C544BD22C325D0007D3C89 /* Assets.xcassets */,
 				18C544BF22C325D0007D3C89 /* LaunchScreen.storyboard */,
@@ -226,9 +234,11 @@
 				18C5450122C33C5C007D3C89 /* Preferenceible.swift in Sources */,
 				18C544FE22C3269B007D3C89 /* TakePhotoType.swift in Sources */,
 				18C544F422C3269B007D3C89 /* Codable+ToData.swift in Sources */,
+				18073DBE23C589B000D561F9 /* DefaultsObservation.swift in Sources */,
 				18C544FA22C3269B007D3C89 /* DefaultsManager.swift in Sources */,
 				18F74DA323606EBC007DF8C8 /* DefaultsConfig.swift in Sources */,
 				18C544FC22C3269B007D3C89 /* Person.swift in Sources */,
+				18073DC123C5B1E000D561F9 /* SecondViewController.swift in Sources */,
 				18C544B722C325CF007D3C89 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,9 +251,11 @@
 				18C5450222C33C5C007D3C89 /* Preferenceible.swift in Sources */,
 				18C544CC22C325D0007D3C89 /* SwiftyDefaultsTests.swift in Sources */,
 				18C544FD22C3269B007D3C89 /* Person.swift in Sources */,
+				18073DBF23C589B000D561F9 /* DefaultsObservation.swift in Sources */,
 				18C544F522C3269B007D3C89 /* Codable+ToData.swift in Sources */,
 				18C544FB22C3269B007D3C89 /* DefaultsManager.swift in Sources */,
 				18C544FF22C3269B007D3C89 /* TakePhotoType.swift in Sources */,
+				18073DC223C5B1E000D561F9 /* SecondViewController.swift in Sources */,
 				18F74DA523607131007DF8C8 /* DefaultsConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
