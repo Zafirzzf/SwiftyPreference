@@ -21,7 +21,7 @@ let package = Package(
         .target(
             name: "SwiftyPreference",
             dependencies: [],
-            path: "SwiftyPreference/Sources"
+            path: "Sources"
         ),
         .testTarget(
             name: "SwiftyPreferenceTests",
