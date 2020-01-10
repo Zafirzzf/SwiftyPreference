@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SwiftyPreference"
-  s.version      = "2.0"
+  s.version      = "2.0.1"
   s.summary      = "Swifty UserDefaults by strong type."
 
   s.description  = <<-DESC
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   # s.platform     = :ios, "9.0"
     s.ios.deployment_target  = '9.0'
     s.swift_version = '4.0'
-    s.source       = { :git => "https://github.com/Zafirzzf/SwiftyPreference.git", :tag => "2.0" }
+    s.source       = { :git => "https://github.com/Zafirzzf/SwiftyPreference.git", :tag => "2.0.1" }
     s.source_files  = "Sources/*"
 
 end
