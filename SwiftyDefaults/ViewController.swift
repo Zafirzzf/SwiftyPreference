@@ -20,6 +20,9 @@ class ViewController: UIViewController {
             print("收到变更: ", new)
         }
         DefaultsConfig.person = Person(name: "asdf", age: 1, height: 1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
+            DefaultsConfig.person = Person(name: "asdf", age: 1, height: 1)
+        }
         
     }
     
