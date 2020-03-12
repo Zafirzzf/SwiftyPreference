@@ -9,7 +9,7 @@
 import UIKit
 
 class SecondViewController: UIViewController {
-    var personObservation: NSObject?
+    var personObservation: ObservationRemovable?
     
     deinit {
         print("销毁2")

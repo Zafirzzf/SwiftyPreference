@@ -13,12 +13,18 @@ class SwiftyDefaultsTests: XCTestCase {
 
     override func setUp() {
         
+        clear()
+    }
+    
+    func clear() {
         UserDefaults.standard.dictionaryRepresentation().forEach {
             UserDefaults.standard.removeObject(forKey: $0.key)
         }
     }
 
     func testNormalType() {
+        print(DefaultsConfig.token, "--")
+        clear()
         XCTAssertTrue(DefaultsConfig.token == "defaultValue")
         DefaultsConfig.token = "xxx"
         XCTAssertTrue(DefaultsConfig.token == "xxx")
@@ -29,16 +35,19 @@ class SwiftyDefaultsTests: XCTestCase {
     }
     
     func testObjectTypeDefaultValue() {
+        print(DefaultsConfig.person.name)
         XCTAssertTrue(DefaultsConfig.person.name == "zafir")
         XCTAssertTrue(DefaultsConfig.person2?.name == nil)
     }
     
     func testObjectTypeSetValue() {
+        clear()
         DefaultsConfig.person = Person(name: "aloha")
         XCTAssertTrue(DefaultsConfig.person.name == "aloha")
     }
     
     func testOptionalObjectTypeSetValue() {
+        clear()
         DefaultsConfig.person2 = nil
         XCTAssertTrue(DefaultsConfig.person2 == nil)
         DefaultsConfig.person2 = Person(name: "jackson")
@@ -46,16 +55,19 @@ class SwiftyDefaultsTests: XCTestCase {
     }
     
     func testEnumTypeDefaultValue() {
+        clear()
         XCTAssertTrue(DefaultsConfig.photoType == .front)
         XCTAssertTrue(DefaultsConfig.photoType2 == nil)
     }
     
     func testEnumTypeSetValue() {
+        clear()
         DefaultsConfig.photoType = .front
         XCTAssertTrue(DefaultsConfig.photoType == .front)
     }
     
     func testOptionalEnumTypeSetValue() {
+        clear()
         DefaultsConfig.photoType2 = nil
         XCTAssertTrue(DefaultsConfig.photoType2 == nil)
         DefaultsConfig.photoType2 = .back
@@ -63,6 +75,7 @@ class SwiftyDefaultsTests: XCTestCase {
     }
     
     func testRemoveObject() {
+        clear()
         XCTAssertTrue(DefaultsConfig.person.name == "zafir")
         DefaultsConfig.person.name = "lele"
         XCTAssertTrue(DefaultsConfig.person.name == "lele")

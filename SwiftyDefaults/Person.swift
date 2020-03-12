@@ -9,7 +9,7 @@
 import Foundation
 
 struct Person: Preferenceible, Codable {
-    var name: String = ""
+    var name: String = "zafir"
     var age: Int = 0
     var height: Int = 0
     

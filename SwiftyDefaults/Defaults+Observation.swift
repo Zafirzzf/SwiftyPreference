@@ -1,21 +1,31 @@
 //
-//  DefaulsObservation.swift
+//  Defaults+Observation.swift
 //  SwiftyDefaults
 //
-//  Created by 周正飞 on 2020/1/8.
+//  Created by 周正飞 on 2020/3/12.
 //  Copyright © 2020 周正飞. All rights reserved.
 //
 
 import Foundation
 
+extension DefaultsKey {
+    public func observe(change: @escaping (_ newVaue: T) -> Void) -> ObservationRemovable {
+        DefaultsObservation(key: key, defaults: defaults, onChange: change)
+    }
+}
 
-class DefaultsObservation<T: Preferenceible>: NSObject {
+public protocol ObservationRemovable {
+    func removeObserver()
+}
+
+class DefaultsObservation<T: Preferenceible>: NSObject, ObservationRemovable {
+    
     private let key: String
     private let onChange: (T) -> Void
     private let defaults: UserDefaults
     
     deinit {
-        defaults.removeObserver(self, forKeyPath: key, context: nil)
+        removeObserver()
     }
     
     init(key: String, defaults: UserDefaults, onChange: @escaping (T) -> Void) {
@@ -24,6 +34,10 @@ class DefaultsObservation<T: Preferenceible>: NSObject {
         self.defaults = defaults
         super.init()
         defaults.addObserver(self, forKeyPath: key, options: [.old, .new], context: nil)
+    }
+    
+    func removeObserver() {
+        defaults.removeObserver(self, forKeyPath: key, context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

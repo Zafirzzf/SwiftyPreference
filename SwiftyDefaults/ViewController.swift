@@ -10,20 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var personObservation: NSObject?
+    var observation: ObservationRemovable?
+    
+    deinit {
+        observation = nil
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        DefaultsConfig.person = Person()
-        personObservation = DefaultsConfig.$person.observe { (new) in
-            print("收到变更: ", new)
-        }
-        DefaultsConfig.person = Person(name: "asdf", age: 1, height: 1)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
-            DefaultsConfig.person = Person(name: "asdf", age: 1, height: 1)
-        }
         
+        observation = DefaultsConfig.$animal.observe { (newAnimal) in
+            print(newAnimal.name)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
