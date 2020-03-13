@@ -11,11 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var observation: ObservationRemovable?
-    
-    deinit {
-        observation = nil
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

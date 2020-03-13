@@ -14,14 +14,14 @@ class SecondViewController: UIViewController {
     deinit {
         print("销毁2")
     }
+    var observation: ObservationRemovable?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-        DefaultsConfig.person = Person()
-        personObservation = DefaultsConfig.$person.observe { (new) in
-            print("收到变更2: ", new)
+        observation = DefaultsConfig.$animal.observe { (newAnimal) in
+            print(newAnimal.name, "secondviewcontroller")
         }
-        DefaultsConfig.person = Person(name: "asdf", age: 3, height: 1)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
