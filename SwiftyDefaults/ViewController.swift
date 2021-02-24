@@ -15,13 +15,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        observation = DefaultsConfig.$animal.observe { (newAnimal) in
-            print(newAnimal.name)
+        observation = DefaultsConfig.$token.observe { (token) in
+            print(token)
         }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        present(SecondViewController(), animated: true, completion: nil)
     }
 }
 

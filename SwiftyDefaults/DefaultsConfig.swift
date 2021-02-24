@@ -30,8 +30,6 @@ struct DefaultsConfig {
     @DefaultsKey(key: "photoType2")
        static var photoType2: TakePhotoType?
     
-    @DefaultsKey(key: "animal", defaultValue: Animal())
-       static var animal: Animal
     
     @DefaultsKey(key: "friends", defaultValue: [])
        static var friends: [String]

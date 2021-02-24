@@ -23,13 +23,3 @@ struct Person: Preferenceible, Codable {
        return person
     }
 }
-
-class Animal: Preferenceible, Codable {
-    var name = "cat"
-    init() {
-        
-    }
-    init(name: String) {
-        self.name = name
-    }
-}
