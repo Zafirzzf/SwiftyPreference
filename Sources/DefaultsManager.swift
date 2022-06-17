@@ -42,34 +42,30 @@ public class DefaultsManager {
 }
 
 @propertyWrapper
-public struct DefaultsKey<P: Preferenceible> {
+public struct DefaultsKey<T: Preferenceible> {
     
-    private let key: String
-    private let defaultValue: P
-    private let defaults: UserDefaults
+    let key: String
+    let defaultValue: T
+    let defaults: UserDefaults
     
     public var projectedValue: Self {
       get { self }
       set { self = newValue }
     }
     
-    public var wrappedValue: P {
+    public var wrappedValue: T {
         get {
-            P.getValue(from: key, userDefaults: defaults) ?? defaultValue
+            T.getValue(from: key, userDefaults: defaults) ?? defaultValue
         }
         set {
-            P.saveValue(with: newValue, key: key, userDefaults: defaults)
+            T.saveValue(with: newValue, key: key, userDefaults: defaults)
         }
     }
     
-    public init(key: String, defaultValue: P, type: DefaultsType = .user) {
+    public init(key: String, defaultValue: T, type: DefaultsType = .user) {
         self.key = key
         self.defaultValue = defaultValue
         self.defaults = type == .device ? DefaultsManager.deviceDefaults : DefaultsManager.userDefaults
-    }
-    
-    public func observe(change: @escaping (_ newVaue: P) -> Void) -> NSObject {
-        DefaultsObservation(key: key, defaults: defaults, onChange: change)
     }
     
     public func remove() {
@@ -77,7 +73,7 @@ public struct DefaultsKey<P: Preferenceible> {
     }
 }
 
-extension DefaultsKey where P: ExpressibleByNilLiteral {
+extension DefaultsKey where T: ExpressibleByNilLiteral {
     public init(key: String, type: DefaultsType = .user) {
         self.key = key
         self.defaultValue = nil

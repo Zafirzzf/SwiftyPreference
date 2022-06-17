@@ -11,7 +11,7 @@ import Foundation
 public protocol PreferenceModel: Preferenceible {
     static var defaulsType: DefaultsType { get }
     static var preferencekey: String { get }
-    static func fromPreferenceValue() -> Self?
+    static var preferValue: Self? { get }
     func saveToPreference()
 }
 
@@ -19,12 +19,12 @@ extension PreferenceModel {
     public static var defaulsType: DefaultsType { .user }
     public static var preferencekey: String { "com.defaults.\(Self.self)" }
     
-    private static var preference: DefaultsKey<Self?> {
+    public static var preference: DefaultsKey<Self?> {
         DefaultsKey<Self?>(key: preferencekey, type: defaulsType)
     }
     
-    public static func fromPreferenceValue() -> Self? {
-       return preference.wrappedValue
+    public static var preferValue: Self? {
+        preference.wrappedValue
     }
     
     public func saveToPreference() {
